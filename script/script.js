@@ -1,0 +1,80 @@
+
+
+const toggle = document.querySelector('.toggle');
+
+let check = true;
+toggle.addEventListener('click', () => {
+
+    if(check) {
+        toggle.style.transform = 'translateX(45px)';
+        toggle.style.background = '#fff';
+        document.body.style.background = '#000';
+        document.querySelector('.text').style.color = '#fff';
+    } else {
+        toggle.style.transform = 'translateX(0)';
+        toggle.style.background = '#000';
+        document.body.style.background = '#fff';
+        document.querySelector('.text').style.color = '#000';
+    }
+    check = !check;
+})
+
+let text = 'calculator';
+const textContainer = document.querySelector('.text');
+let currentIndex = 0;
+
+function typing(){
+    if(currentIndex < text.length) {
+        textContainer.textContent += text.charAt(currentIndex);
+        currentIndex++;
+        setTimeout(typing, 50);
+    } else {
+        setTimeout(eraseText, 2000);
+    }
+}
+
+function eraseText() {
+    if(currentIndex > 0) {
+        textContainer.textContent = text.substring(0, currentIndex - 1);
+        currentIndex--;
+        setTimeout(eraseText, 50);
+    } else {
+        setTimeout(typing, 500);
+    }
+}
+typing();
+
+const inputNumber = document.querySelector('.inputNumber');
+const btnContent = document.querySelectorAll('.btn');
+const reset = document.querySelector('.reset');
+const total = document.querySelector('.total');
+const removeOne = document.querySelector('.removeOne');
+
+let index = 0;
+btnContent.forEach(num => {
+    num.addEventListener('click', () => {
+        inputNumber.value += num.textContent;
+
+        removeOne.addEventListener('click', () => {
+
+            if(index < inputNumber.value) {
+                let getLast = inputNumber.value.charAt(0);
+                getLast.slice(getLast, 0);
+            }
+        })
+    })
+})
+
+reset.addEventListener('click', () => {
+    inputNumber.value = "";
+})
+
+total.addEventListener('click', () => {
+    try {
+        inputNumber.value = eval(inputNumber.value);
+    }catch(err) {
+        inputNumber.value = `${err}`;
+    }
+})
+
+
