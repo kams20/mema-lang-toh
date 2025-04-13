@@ -66,6 +66,12 @@ reset.addEventListener('click', () => {
 })
 
 total.addEventListener('click', () => {
+
+    if(!inputNumber.value) {
+        alert('please enter number first!');
+        return;
+    }
+    
     try {
         inputNumber.value = eval(inputNumber.value);
     }catch(err) {
