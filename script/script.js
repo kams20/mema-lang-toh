@@ -77,6 +77,7 @@ total.addEventListener('click', () => {
 removeOne.addEventListener('click', removeNumOne);
 
 function removeNumOne() {
+
     if(inputNumber.value.length > 0) {
         inputNumber.value = inputNumber.value.slice(0, -1);
     }
