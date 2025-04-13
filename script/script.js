@@ -71,12 +71,8 @@ total.addEventListener('click', () => {
         alert('please enter number first!');
         return;
     }
-    
-    try {
-        inputNumber.value = eval(inputNumber.value);
-    }catch(err) {
-        inputNumber.value = `${err}`;
-    }
+
+    return inputNumber.value = eval(inputNumber.value);
 })
 
 
@@ -88,4 +84,5 @@ function removeNumOne() {
         inputNumber.value = inputNumber.value.slice(0, -1);
     }
 }
+
 
