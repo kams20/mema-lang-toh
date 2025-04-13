@@ -1,8 +1,11 @@
 
 
+
+
 const toggle = document.querySelector('.toggle');
 
 let check = true;
+
 toggle.addEventListener('click', () => {
 
     if(check) {
@@ -54,15 +57,8 @@ let index = 0;
 btnContent.forEach(num => {
     num.addEventListener('click', () => {
         inputNumber.value += num.textContent;
-
-        removeOne.addEventListener('click', () => {
-
-            if(index < inputNumber.value) {
-                let getLast = inputNumber.value.charAt(0);
-                getLast.slice(getLast, 0);
-            }
-        })
     })
+
 })
 
 reset.addEventListener('click', () => {
@@ -77,4 +73,12 @@ total.addEventListener('click', () => {
     }
 })
 
+
+removeOne.addEventListener('click', removeNumOne);
+
+function removeNumOne() {
+    if(inputNumber.value.length > 0) {
+        inputNumber.value = inputNumber.value.slice(0, -1);
+    }
+}
 
