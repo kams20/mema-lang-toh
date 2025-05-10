@@ -62,10 +62,21 @@ btnContent.forEach(num => {
 })
 
 reset.addEventListener('click', () => {
-    inputNumber.value = "";
+
+    if(!inputNumber.value) {
+        alert('please enter number first!');
+        return;
+    }
+
+    return inputNumber.value = "";
 })
 
 total.addEventListener('click', () => {
+
+    if(!/[+-/*]/.test(inputNumber.value)) {
+        alert('no operators, please input');
+        return;
+    }
 
     if(!inputNumber.value) {
         alert('please enter number first!');
@@ -79,6 +90,11 @@ total.addEventListener('click', () => {
 removeOne.addEventListener('click', removeNumOne);
 
 function removeNumOne() {
+
+    if(!inputNumber.value) {
+        alert('please enter number first!');
+        return;
+    }
 
     if(inputNumber.value.length > 0) {
         inputNumber.value = inputNumber.value.slice(0, -1);
